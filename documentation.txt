@@ -1,0 +1,24 @@
+1st Commit:
+
+Created two files - parkingLot.java and parkingLotMain.java
+
+Language Used and Reason - I wanted to start this project with either java or python as they
+were both OOP languages that I was familiar with. I decided to choose java over python because
+I had more experience with java OOP and Data structures and decided that if it starts to get
+messy or complicated after 500+ lines of code I will rewrite what I have in python and continue
+from there.
+
+Progress - I have created the "back-end" file which is the parkingLot.java file to make a
+parkingLot object. It is stored using a hashtable because a hashtable is a good data structure
+for storing data, inserting, and deleting. It has one private field which is the hashtable and 
+some methods such as parking and unparking at the lot, and getting the status of a parking lot
+slot. The main file which is the parkingLotMain.java, utilizes the parkinglot object to then ask 
+the user if they would like to park or unpark their "car" from one of the slots. 
+
+Things to note - The scan type in the main file when asking which spot to park inis an int which 
+right now, if the user enters any other data type the code breaks but if a front-end is added then 
+they will only have a very specific choice to pick from and then all the other conditions in place 
+to prevent the program from breaking can be removed as well. If the scan type needs to be fixed so 
+that the program doesn't break at its current state then you can make the input type a string and then 
+try parsing int which if done successfully, they entered a valid input and you can proceed to check the
+rest of the conditions.
