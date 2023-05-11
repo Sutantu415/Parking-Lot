@@ -22,3 +22,11 @@ to prevent the program from breaking can be removed as well. If the scan type ne
 that the program doesn't break at its current state then you can make the input type a string and then 
 try parsing int which if done successfully, they entered a valid input and you can proceed to check the
 rest of the conditions.
+
+2nd Commit:
+
+Documentation - Documented the constructor in the ParkingLot.java file to explain what the constructor doesn
+
+Name Conventions - Class names are normally in upper camelcase and I wrote them as lower camelcase so I changed the
+class names to follow the convention and to adjust everything else I changed the file names to match them and then
+changed the constructor and modified line 8 in ParkingLotMain.java to construct the parkingLot object properly
