@@ -1,11 +1,14 @@
 import java.util.Hashtable;
 
-public class parkingLot {
+public class ParkingLot {
     //Fields
     private Hashtable<Integer, Boolean> parkingLot = new Hashtable<>();
 
     //Constructor to make a parking lot
-    public parkingLot() {
+
+    /*Makes a parking lot with 10 empty spots */
+    public ParkingLot() {
+        //Puts 10 spots in the hashtable to make an empty parking lot with 10 available spaces
         for(int i = 1; i <= 10; i++) {
             parkingLot.put(i, false);
         }

@@ -1,11 +1,11 @@
 import java.util.*;
 
-public class parkingLotMain {
+public class ParkingLotMain {
     public static void main(String[] args) {
         //Scanner to get user input
         Scanner scan = new Scanner(System.in);
         //Constructs a parking lot
-        parkingLot lotOne = new parkingLot();
+        ParkingLot lotOne = new ParkingLot();
         //Initialize an empty string to be used to store the user input
         String answer = "";
 
