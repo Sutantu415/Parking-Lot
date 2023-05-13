@@ -16,18 +16,18 @@ public class ParkingLotMain {
             //Checks the input and either parks, unparks, or repeats the question until valid answer is provided
             //If the user types exit to quit then after checking all the if statements it will exit
             if(answer.equals("park")) {
-                System.out.print("Which spot would you like to park at (Enter a number between 1 and 10): ");
+                System.out.printf("Which spot would you like to park at (Enter a number between 1 and %s): ", lotOne.getParkingSpaces());
                 int spot = scan.nextInt();
-                while(spot<1 || spot > 10) {
-                    System.out.print("Invalid spot, please enter a number between 1 and 10: ");
+                while(spot<1 || spot > lotOne.getParkingSpaces()) {
+                    System.out.printf("Invalid spot, please enter a number between 1 and %s: ", lotOne.getParkingSpaces());
                     spot = scan.nextInt();
                 }
                 lotOne.park(spot);
             } else if(answer.equals("unpark")) {
-                System.out.print("Enter the spot number you parked at (Number between 1 and 10): ");
+                System.out.printf("Enter the spot number you parked at (Number between 1 and %s): ", lotOne.getParkingSpaces());
                 int spot = scan.nextInt();
-                while(spot<1 || spot > 10) {
-                    System.out.print("Invalid spot, please enter a number between 1 and 10: ");
+                while(spot<1 || spot > lotOne.getParkingSpaces()) {
+                    System.out.printf("Invalid spot, please enter a number between 1 and %s: ", lotOne.getParkingSpaces());
                     spot = scan.nextInt();
                 }
                 lotOne.unpark(spot);
