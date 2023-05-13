@@ -25,8 +25,17 @@ rest of the conditions.
 
 2nd Commit:
 
-Documentation - Documented the constructor in the ParkingLot.java file to explain what the constructor doesn
+Documentation - Documented the constructor in the ParkingLot.java file to explain what the constructor does
 
 Name Conventions - Class names are normally in upper camelcase and I wrote them as lower camelcase so I changed the
 class names to follow the convention and to adjust everything else I changed the file names to match them and then
 changed the constructor and modified line 8 in ParkingLotMain.java to construct the parkingLot object properly
+
+3rd Commit:
+
+QOL Changes - Previously the parking lot size was fixed to 10 in both the object file and main file but now it is
+stored in a variable. I also made a get method that'll access the private variable and replaced all the fixed values of
+10 with the get method so that if the "size" of the parking lot ever expands then you just have to change the value
+of the variable to update everything else that uses it.
+
+4th Commit:

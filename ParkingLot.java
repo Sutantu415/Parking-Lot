@@ -3,13 +3,14 @@ import java.util.Hashtable;
 public class ParkingLot {
     //Fields
     private Hashtable<Integer, Boolean> parkingLot = new Hashtable<>();
+    private int parkingLotSpaces = 10;
 
     //Constructor to make a parking lot
 
-    /*Makes a parking lot with 10 empty spots */
+    /*Makes a parking lot with the value of 10 empty spots */
     public ParkingLot() {
         //Puts 10 spots in the hashtable to make an empty parking lot with 10 available spaces
-        for(int i = 1; i <= 10; i++) {
+        for(int i = 1; i <= parkingLotSpaces; i++) {
             parkingLot.put(i, false);
         }
     }
@@ -23,6 +24,13 @@ public class ParkingLot {
      **/
     public boolean status(int x) {
         return parkingLot.get(x);
+    }
+
+    /**Returns the value of empty parking lot spaces
+    *@return returns the total amount of parking spots in the parking lot
+    **/
+    public int getParkingSpaces() {
+        return this.parkingLotSpaces;
     }
 
     //Methods
