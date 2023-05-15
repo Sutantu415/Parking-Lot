@@ -5,7 +5,8 @@ public class ParkingLotMain {
         //Scanner to get user input
         Scanner scan = new Scanner(System.in);
         //Constructs a parking lot
-        ParkingLot lotOne = new ParkingLot();
+        int parkingLotSize = 15;
+        ParkingLot lotOne = new ParkingLot(parkingLotSize);
         //Initialize an empty string to be used to store the user input
         String answer = "";
 
@@ -15,29 +16,31 @@ public class ParkingLotMain {
             answer = scan.next().toLowerCase();
             //Checks the input and either parks, unparks, or repeats the question until valid answer is provided
             //If the user types exit to quit then after checking all the if statements it will exit
-            if(answer.equals("park")) {
-                System.out.printf("Which spot would you like to park at (Enter a number between 1 and %s): ", lotOne.getParkingSpaces());
-                int spot = scan.nextInt();
-                while(spot<1 || spot > lotOne.getParkingSpaces()) {
-                    System.out.printf("Invalid spot, please enter a number between 1 and %s: ", lotOne.getParkingSpaces());
-                    spot = scan.nextInt();
-                }
-                lotOne.park(spot);
-            } else if(answer.equals("unpark")) {
-                System.out.printf("Enter the spot number you parked at (Number between 1 and %s): ", lotOne.getParkingSpaces());
-                int spot = scan.nextInt();
-                while(spot<1 || spot > lotOne.getParkingSpaces()) {
-                    System.out.printf("Invalid spot, please enter a number between 1 and %s: ", lotOne.getParkingSpaces());
-                    spot = scan.nextInt();
-                }
-                lotOne.unpark(spot);
-            } else if(!answer.equals("exit")) {
-                //Prints invalid option and then prints question again at the top so no need to type it again
-                System.out.print("Invalid option! ");
-                //Clears the scanner by moving it to the next line in case someone types multiple words as an input
-                scan.nextLine();
+            if(answer.equals("exit")) {
+                break;
             }
-        } while(!answer.equals("exit"));
+
+            boolean isParking = answer.equals("park");
+            boolean isUnParking = answer.equals("unpark");
+            if(!isParking && !isUnParking) {
+                continue;
+            }
+
+            System.out.printf("Enter parking spot between 1 and %s: ", parkingLotSize);
+            int spot = scan.nextInt();
+
+            try {
+                if(isParking) {
+                    lotOne.park(spot);
+                 } else {
+                    lotOne.unPark(spot);
+                 }
+            }
+            catch(Exception e) {
+                System.out.println(e.getMessage());
+            }
+        } while(true);
+        
         //Closes the scanner
         scan.close();
     }
