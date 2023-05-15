@@ -30,14 +30,14 @@ public class ParkingLot {
 
     /**
      *Checks the status of a parking spot to see if there is a car there or not
-     *If the spot isn't valid then it throws an exception saying what values
+     *If the spot isn't valid then it throws an exception giving the valid options
      *@param parkingLotSpot is the parking spot that you are getting the status on
      *@return returns false if the slot is full/car is parked there or true for empty/car is not parked there
      **/
     public boolean getStatus(int parkingLotSpot) throws Exception {
         //check for bounds of parkingLotSpot
         if(parkingLotSpot <= 0 || parkingLotSpot > this.parkingLotSpaces) {
-            throw new Exception(String.format("No such parking spot. Please pick a number between 1 and %s", this.parkingLotSpaces));
+            throw new ParkingLotException(String.format("No such parking spot. Please pick a number between 1 and %s", this.parkingLotSpaces));
         } else {
             return this.parkingLot.get(parkingLotSpot);
         }
@@ -55,12 +55,12 @@ public class ParkingLot {
 
     /**
      *Parks at the requested slot if it is empty and prints a message
-     *indicating you have parked successfully, else throws exception
+     *indicating you have parked successfully, else throws exception for an invalid value
      *@param parkingSpotToPark is the parking spot that they are trying to park at
      **/
     public void park(int parkingSpotToPark) throws Exception {
         if(this.getStatus(parkingSpotToPark)) {
-            throw new Exception("This parking spot is already filled.");
+            throw new ParkingLotException("This parking spot is already filled.");
         }
         else {
             parkingLot.put(parkingSpotToPark, true);
@@ -70,12 +70,12 @@ public class ParkingLot {
 
     /**
      *Unparks the car and prints a message indicating you unnparked
-     *Else it throws an exception
+     *Else it throws an exception due to an invalid value
      *@param parkingSpotToUnPark is the parking spot that they are trying to unpark at
      **/
     public void unPark(int parkingSpotToUnPark) throws Exception {
         if(!this.getStatus(parkingSpotToUnPark)) {
-            throw new Exception("This parking spot is empty.");
+            throw new ParkingLotException("This parking spot is empty.");
         } else {
             parkingLot.put(parkingSpotToUnPark, false);
             System.out.println("You have successfully unparked!");
