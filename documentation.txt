@@ -39,3 +39,21 @@ stored in a variable. I also made a get method that'll access the private variab
 of the variable to update everything else that uses it.
 
 4th Commit:
+
+This commit is all about Refactoring and Renaming Variables
+
+Progress - Simplified the main file by removing many conditions that are now checked in the object file. Changed the 
+object file to check for invalid options which is known as protecting the parameter. If an invalid option is provided,
+then it will throw an exception saying that the input isn't valid and what the valid input is. What happened is known 
+as Refactoring. I have also changed the variable names to be more specific for the purpose it is used for rather than
+an obscure name such as 'x'. In programming the main file is supposed to be written by anyone that can use the parkingLot
+library that I am writing and all exceptions are supposed to be handled in the library that is written. 
+
+Notes - The exceptions that are currently in the object file should be coming from a separate file that contains illegal
+values and throws specific error messages. This separate file for specifically exception handling and will most likely be
+added in a future commit. Also need to study what inlining is and how it is resource effecient.
+
+Future Commits - Adding an extraction method which is just to ensure readability and make it so that code blocks that are
+repeated often are put in a method and instead that method is called.
+
+5th Commit:
