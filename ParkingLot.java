@@ -34,10 +34,10 @@ public class ParkingLot {
      *@param parkingLotSpot is the parking spot that you are getting the status on
      *@return returns false if the slot is full/car is parked there or true for empty/car is not parked there
      **/
-    public boolean getStatus(int parkingLotSpot) throws Exception {
+    private boolean getStatus(int parkingLotSpot) throws ParkingLotException {
         //check for bounds of parkingLotSpot
         if(parkingLotSpot <= 0 || parkingLotSpot > this.parkingLotSpaces) {
-            throw new ParkingLotException(String.format("No such parking spot. Please pick a number between 1 and %s", this.parkingLotSpaces));
+            throw new ParkingLotException(String.format("No such parking spot. Please pick a number between 1 and %s", this.parkingLotSpaces), parkingLotSpot);
         } else {
             return this.parkingLot.get(parkingLotSpot);
         }
@@ -58,9 +58,9 @@ public class ParkingLot {
      *indicating you have parked successfully, else throws exception for an invalid value
      *@param parkingSpotToPark is the parking spot that they are trying to park at
      **/
-    public void park(int parkingSpotToPark) throws Exception {
+    public void park(int parkingSpotToPark) throws ParkingLotException {
         if(this.getStatus(parkingSpotToPark)) {
-            throw new ParkingLotException("This parking spot is already filled.");
+            throw new ParkingLotException("This parking spot is already filled.", parkingSpotToPark);
         }
         else {
             parkingLot.put(parkingSpotToPark, true);
@@ -73,9 +73,9 @@ public class ParkingLot {
      *Else it throws an exception due to an invalid value
      *@param parkingSpotToUnPark is the parking spot that they are trying to unpark at
      **/
-    public void unPark(int parkingSpotToUnPark) throws Exception {
+    public void unPark(int parkingSpotToUnPark) throws ParkingLotException {
         if(!this.getStatus(parkingSpotToUnPark)) {
-            throw new ParkingLotException("This parking spot is empty.");
+            throw new ParkingLotException("This parking spot is empty.", parkingSpotToUnPark);
         } else {
             parkingLot.put(parkingSpotToUnPark, false);
             System.out.println("You have successfully unparked!");

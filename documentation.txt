@@ -67,4 +67,11 @@ Document Changes - Just made very small modifications to existing documentation 
 
 Note - Will probably make more changes to the ParkingLotException.java file before pushing the commit to the main branch.
 
+Updates Post-Review: I changed all the exceptions being thrown to "ParkingLotException" because that is what the exception
+is being called as. In the ParkingLotException file I created a field called illegalValue that will contain the value that
+triggered the exception. In the constructor I changed the print to just call super(message) which calls the constructor from
+the exception library. Then I added an extra parameter to get the illegal value and in the constructor set the field equal to
+that passed value. I added a getter method to access the illegal value in case the user wants to print it. Added java documentation
+to the ParkingLotException file.
+
 6th Commit:
