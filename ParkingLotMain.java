@@ -36,7 +36,8 @@ public class ParkingLotMain {
                     lotOne.unPark(spot);
                  }
             }
-            catch(Exception e) {
+            catch(ParkingLotException e) {
+                System.out.println(e.getIllegalValue() + " is an illegal value.");
                 System.out.println(e.getMessage());
             }
         } while(true);

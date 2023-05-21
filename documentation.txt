@@ -57,3 +57,23 @@ Future Commits - Adding an extraction method which is just to ensure readability
 repeated often are put in a method and instead that method is called.
 
 5th Commit:
+
+New File - ParkingLotException.java
+
+Progress - Made an exception class for the parkingLot. Currently only prints a specific exception message but should
+be able to handle illegal values within the class itself in the future.
+
+Document Changes - Just made very small modifications to existing documentation to make it clearer.
+
+Note - Will probably make more changes to the ParkingLotException.java file before pushing the commit to the main branch.
+
+    Updated Commit Post-Review: I changed all the exceptions being thrown to "ParkingLotException" because that is what the exception
+    is being called as. In the ParkingLotException file I created a field called illegalValue that will contain the value that
+    triggered the exception. In the constructor I changed the print to just call super(message) which calls the constructor from
+    the exception library. Then I added an extra parameter to get the illegal value and in the constructor set the field equal to
+    that passed value. I added a getter method to access the illegal value in case the user wants to print it. Added java documentation
+    to the ParkingLotException file.
+
+    New Commit to dev-branch: This commit has an extraction method for the unpark and park method called parkOrUnPark
+
+6th Commit:
