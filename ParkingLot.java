@@ -3,6 +3,8 @@ import java.util.Hashtable;
 public class ParkingLot {
     // constants
     private final int MAX_PARKING_SPACES_SUPPORTED = 100;
+    private final String PARK_WORD = "park";
+    private final String UN_PARK_WORD = "unpark";
     //Fields
     private Hashtable<Integer, Boolean> parkingLot = new Hashtable<>();
     private int parkingLotSpaces;
@@ -30,6 +32,7 @@ public class ParkingLot {
 
     /**
      *Checks the status of a parking spot to see if there is a car there or not
+     *If there is a car in the spot then it returns true, if there isn't a car then it returns false
      *If the spot isn't valid then it throws an exception giving the valid options
      *@param parkingLotSpot is the parking spot that you are getting the status on
      *@throws ParkingLotException will throw an exception if an invalid parking spot was entered
@@ -42,6 +45,31 @@ public class ParkingLot {
         } else {
             return this.parkingLot.get(parkingLotSpot);
         }
+    }
+
+    /**
+     * This method is an extraction method that parks or unparks based on the user input
+     * If you are parking it checks to see if a car is already parked in the requested spot by getting the status
+     * In the case its true then you can't park at a full spot and throws an error for parking at a full spot
+     * If unparking then it checks to see if the parking spot requested is empty and checks if the get status returns false
+     * if it returns false that means the parking space was empty to begin with and throws an error for unparking at an empty spot 
+     * @param parkingSpot is the spot that to park/unpark at
+     * @param action is what specifies whether you are parking or unparking
+     * @throws ParkingLotException will throw an exception if an invalid parking spot was entered
+     */
+    private void parkOrUnPark(int parkingSpot, String action) throws ParkingLotException {
+        boolean park = action.equals(PARK_WORD);
+        if(park) {
+            if(this.getStatus(parkingSpot)) {
+                throw new ParkingLotException("This parking spot is full.", parkingSpot);
+            }
+        } else {
+            if(!this.getStatus(parkingSpot)) {
+                throw new ParkingLotException("This parking spot is empty.", parkingSpot);
+            }
+        }
+        parkingLot.put(parkingSpot, park);
+        System.out.println("Success!");
     }
 
     /**Returns the total count of parking lot spaces
@@ -61,14 +89,7 @@ public class ParkingLot {
      *@throws ParkingLotException will throw an exception if an invalid parking spot was entered
      **/
     public void park(int parkingSpotToPark) throws ParkingLotException {
-        /*if(this.getStatus(parkingSpotToPark)) {
-            throw new ParkingLotException("This parking spot is already filled.", parkingSpotToPark);
-        }
-        else {
-            parkingLot.put(parkingSpotToPark, true);
-            System.out.println("You have successfully parked!");
-        }*/
-        this.parkOrUnPark(parkingSpotToPark, "park");
+        this.parkOrUnPark(parkingSpotToPark, PARK_WORD);
     }
 
     /**
@@ -78,33 +99,6 @@ public class ParkingLot {
      *@throws ParkingLotException will throw an exception if an invalid parking spot was entered
      **/
     public void unPark(int parkingSpotToUnPark) throws ParkingLotException {
-        /*if(!this.getStatus(parkingSpotToUnPark)) {
-            throw new ParkingLotException("This parking spot is empty.", parkingSpotToUnPark);
-        } else {
-            parkingLot.put(parkingSpotToUnPark, false);
-            System.out.println("You have successfully unparked!");
-        }*/
-        this.parkOrUnPark(parkingSpotToUnPark, "unpark");
-    }
-
-    /**
-     * This method is an extraction method that parks or unparks based on the user input
-     * @param parkingSpot is the spot that to park/unpark at
-     * @param action is what specifies whether you are parking on parking
-     * @throws ParkingLotException will throw an exception if an invalid parking spot was entered
-     */
-    public void parkOrUnPark(int parkingSpot, String action) throws ParkingLotException {
-        boolean park = action.equals("park");
-        if(park) {
-            if(this.getStatus(parkingSpot)) {
-                throw new ParkingLotException("This parking spot is empty.", parkingSpot);
-            }
-        } else {
-            if(!this.getStatus(parkingSpot)) {
-                throw new ParkingLotException("This parking spot is full.", parkingSpot);
-            }
-        }
-        parkingLot.put(parkingSpot, park);
-        System.out.println("Success!");
+        this.parkOrUnPark(parkingSpotToUnPark, UN_PARK_WORD);
     }
 }
